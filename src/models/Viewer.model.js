@@ -1,27 +1,24 @@
 import { Schema, model } from "mongoose";
 
-const Transaction = new Schema(
+const Viewer = new Schema(
   {
-    sourceCurrency: {
+    name: {
       type: String,
       required: true,
     },
-    sourceQuantity: {
-      type: Number,
-      required: true,
-    },
-    currencyToConvert: {
+    surname: {
       type: String,
       required: true,
     },
-    customerEmail: {
+    dni: {
       type: String,
       required: true,
     },
-    result:{
-      type: Number
-    }
+    email: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true, versionKey: false }
 );
-export default model("Transaction", Transaction);
+export default model("Viewer", Viewer);
