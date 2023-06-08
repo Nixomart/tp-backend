@@ -1,4 +1,16 @@
 import ProductModel from "../models/Product.model.js";
+import multer from "multer";
+
+/* const storage = multer.diskStorage({
+  destination: function (req, file, cb){
+    cb(null, 'uploads')
+  },
+  filename: function (req, file, cb){
+    cb(null, file.filename + "-" + Date.now())
+  }
+})
+
+export const upload = multer({ storage: storage }).single("img") */
 export const getAllProducts = async (req, res) => {
   try {
     const products = await ProductModel.find();
@@ -11,11 +23,14 @@ export const getAllProducts = async (req, res) => {
 
 export const saveProduct = async (req, res) => {
   try {
-    const { name, price, salient } = req.body;
+    const { name, price, salient, description, stock, img } = req.body;
     await ProductModel.create({
-      name: name,
-      price: price,
-      salient: salient
+      name,
+      price,
+      salient,
+      description,
+      stock,
+      img
     });
     res.status(200).json({ message: "product created!" });
   } catch (error) {
@@ -23,6 +38,7 @@ export const saveProduct = async (req, res) => {
     res.status(400).json({ message: "Err in saveProduct" });
   }
 };
+
 
 export const editProduct = async (req, res) => {
   try {

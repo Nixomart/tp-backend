@@ -1,0 +1,160 @@
+<section class="row bg-white">
+  <div class="col-md-8 d-none d-md-block">
+    <div class="text-center bg-primary text-white">Control de divisas</div>
+    <div class="row row-cols-2">
+      <p>Elige de donde</p>
+      <p>Elige hacia donde</p>
+    </div>
+    <div class="d-flex column-gap-3">
+      <select
+      name="o"
+      [(ngModel)]="sourceCurrency"
+      class="form-select"
+      aria-label="Default select example"
+      >
+      <option selected value="USD">USD</option>
+      <option value="ARS">ARS</option>
+      <option value="BTC">BTC</option>
+      <option value="USD">USD</option>
+      <option value="BRL">BRL</option>
+    </select>
+    
+      <select
+        name="o"
+        [(ngModel)]="currencyToConvert"
+        class="form-select"
+        aria-label="Default select example"
+      >
+        <option selected value="USD">USD</option>
+        <option value="ARS">ARS</option>
+        <option value="BTC">BTC</option>
+        <option value="USD">USD</option>
+        <option value="BRL">BRL</option>
+      </select>
+      <button
+        class="btn btn-outline-success"
+        (click)="getorigin()"
+        type="submit"
+      >
+        Search
+      </button>
+    </div>
+    <form class="d-flex my-2" role="search">
+      <input
+        name="oaksdo"
+        class="form-control me-2"
+        type="search"
+        placeholder="Buscar Por email"
+        aria-label="Search"
+        [(ngModel)]="emailClienteToFind"
+      />
+      <button
+        class="btn btn-outline-success"
+        (click)="getEmail()"
+        type="submit"
+      >
+        Search
+      </button>
+    </form>
+    <table class="table text-white">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">
+            <div class="d-flex flex-column">
+              <span>Email</span>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="d-flex flex-column">
+              <span>DESDE</span>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="d-flex flex-column">
+              <span>A</span>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="d-flex flex-column">
+              <span>CANTIDAD</span>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of transactions">
+          <th scope="row"></th>
+          <td>{{ transaction.customerEmail }}</td>
+          <td>{{ transaction.sourceCurrency }}</td>
+          <td>{{ transaction.currencyToConvert }}</td>
+          <td>{{ transaction.result }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <form class="card">
+      <div class="card-body bg-primary bg-gradient gap-3 d-flex flex-column">
+        <div class="text-white">Conversor de Divisas</div>
+        <div>
+          <label for="amount" class="text-white-50">Tue email</label>
+          <input
+            type="text"
+            placeholder="Cantidad"
+            name="amount"
+            id=""
+            [(ngModel)]="emailCliente"
+          />
+        </div>
+        <div>
+          <label for="amount" class="text-white-50">Cantidad</label>
+          <input
+            type="number"
+            placeholder="Cantidad"
+            name="amount"
+            id=""
+            [(ngModel)]="cantidadOrigen"
+          />
+        </div>
+        <div>
+          <label for="" class="text-white-50">De:</label>
+          <select
+            name="oa"
+            [(ngModel)]="monedaOrigen"
+            class="form-select"
+            aria-label="Default select example"
+          >
+            <option selected value="ARS">ARS</option>
+            <option value="USD">USD</option>
+            <option value="BTC">BTC</option>
+            <option value="ARS">ARS</option>
+            <option value="BRL">BRL</option>
+          </select>
+        </div>
+        <div>
+          <label for="" class="text-white-50">A:</label>
+          <select
+            name="o"
+            [(ngModel)]="monedaDestino"
+            class="form-select"
+            aria-label="Default select example"
+          >
+            <option selected value="USD">USD</option>
+            <option value="ARS">ARS</option>
+            <option value="BTC">BTC</option>
+            <option value="USD">USD</option>
+            <option value="BRL">BRL</option>
+          </select>
+        </div>
+        <div class="bg-white text-black">{{ convertido }}</div>
+        <input
+          [disabled]="!monedaOrigen || !monedaDestino || !cantidadOrigen"
+          type="button"
+          (click)="handleDvisas()"
+          class="bg-warning"
+        />
+      </div>
+    </form>
+  </div>
+</section>

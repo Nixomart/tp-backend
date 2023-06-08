@@ -1,0 +1,96 @@
+<div class="d-flex">
+  <button type="button" class="btn btn-primary m-auto" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Añadir nuevo
+  </button>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">añadir nuevo!</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form class="m-5 rounded-5 p-3 shadow-lg">
+        <div class="mb-3 d-flex flex-column flex-lg-row column-gap-2">
+          <div>
+            <label for="exampleInputEmail1" class="form-label"
+            >espectador</label
+          >
+            <select name="salient" class="form-select" aria-label="Default select example" [(ngModel)]="newTicket.viewer?._id">
+              <option *ngFor="let ticket of tickets" value={{ticket.viewer?._id}} >{{ticket.viewer?.name}}</option>
+            </select>
+            <label for="exampleInputEmail1" class="form-label"
+              >Precio del ticket</label
+            >
+            <input
+              type="number"
+              name="1"
+              [(ngModel)]="newTicket.price"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+          </div>
+         
+          <div>
+            <label for="exampleInputEmail1" class="form-label"
+              >Fecha</label
+            >
+            <input
+            [(ngModel)]="newTicket.dateSold"
+            name="1"
+              type="date"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          
+        </div>
+        <select name="salient" class="form-select" aria-label="Default select example" [(ngModel)]="newTicket.category">
+          <option value="espectador" >espectador</option>
+          <option value="local">local</option>
+        </select>
+        
+        <button type="submit" class="btn btn-primary mt-3" (click)="addTicket(newTicket)">Guardar</button>
+      </form>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+  <section class="container">
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">DNI</th>
+          <th scope="col">TIPO</th>
+          <th scope="col">PRECIO COBRADO</th>
+          <th scope="col">FECHA</th>
+          <th scope="col">ACCIONES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let ticket of tickets">
+          <td>{{ticket.viewer?.dni}}</td>
+          <td>{{ticket.category}}</td>
+          <td>{{ticket.price}}</td>
+          <td>{{ticket.dateSold}}</td>
+          <td class="d-flex column-gap-2">
+             <!--  <button (click)="handleEdit(ticket.id!)" type="button" class="btn btn-success">Editar</button>
+              <button (click)="handleDeleteTicket(ticket.id!)" type="button" class="btn btn-danger">Eliminar</button> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ul class="list-group">
+      <li class="list-group-item active" aria-current="true">Resumen de ventas</li>
+   <!--    <li class="list-group-item">Cantidad de ventas hoy: {{ticketsLenght()}}</li>
+      <li class="list-group-item">Personas Estranjeras que compraron : {{ticketsEstranjero()}}</li>
+      <li class="list-group-item">Personas Locales que compraron como: {{ticketsLocal()}}</li> -->
+    </ul>
+  </section>

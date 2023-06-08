@@ -8,6 +8,7 @@ const ProductSchema = new Schema(
     },
     description: {
       type: String,
+      required:true
     },
     img: {
       type: String,
@@ -26,5 +27,7 @@ const ProductSchema = new Schema(
   },
   { timestamps: true, versionKey: false }
 );
-
+ProductSchema.methods.setImgUrl = function(filename) {
+  this.img = `http://localhost:4000/public/${filename}`;
+}
 export default model("Product", ProductSchema);

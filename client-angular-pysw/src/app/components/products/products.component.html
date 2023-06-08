@@ -1,0 +1,163 @@
+<body>
+  <div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+      <div *ngFor="let product of productS" class="carousel-item active">
+        <div
+          [style.backgroundImage]="'url(' + product.img + ')'"
+          class="img-cover flex-column align-items-start d-flex"
+        >
+          <h1 class="text-white fs-1 text-uppercase fw-bold mt-auto">
+            {{ product.name }}
+          </h1>
+          <p class="text-white mb-5">{{ product.description }}</p>
+          <!-- <img src="{{ product.img }}" class="img-cover" alt="..." /> -->
+        </div>
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExample"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExample"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <h1 class="text-center my-4">TODOS LOS PRODUCTOS</h1>
+  <div class="row row-cols-3 mt-5 column-gap-5 mx-5 row-gap-5">
+    <div *ngFor="let product of products" class="card w-auto">
+      <img
+        src="{{ product.img }}"
+        class="card-img-top img-card-cover"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">{{ product.description }}</p>
+        <p>Stock Disponible: {{ product.stock }}</p>
+        <div class="d-flex text-center">
+          <p class="my-auto px-2">${{ product.price }}</p>
+          <a href="#" class="btn btn-primary">Comprar</a>
+          <a
+            href="#"
+            data-bs-toggle="modal"
+            (click)="selectedProducto(product)"
+            data-bs-target="#exampleModal"
+            class="btn btn-success"
+            >Editar</a
+          >
+          <a
+            href="#"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            class="btn btn-danger"
+            >Editar</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+    *ngIf="selectedProducto"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">
+            Producto a editar
+          </h1>
+        </div>
+        <form class="m-5 rounded-5 p-3 shadow-lg">
+          <div class="mb-3 d-flex flex-column flex-lg-column column-gap-2">
+            <div>
+              <label for="exampleInputEmail1" class="form-label"
+                >Nombre De producto</label
+              >
+              <input
+                type="text"
+                name="1"
+                class="form-control"
+                id="exampleInputEmail1"
+                value={{selectedProduct.name}}
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <div>
+              <label for="exampleInputEmail1" class="form-label"
+                >Precio del producto</label
+              >
+              <input
+              name="2"
+                type="number"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                value={{selectedProduct.price}}
+              />
+            </div>
+            <div>
+              <label for="exampleInputEmail1" class="form-label"
+                >stock del producto</label
+              >
+              <input
+              name="3"
+                type="number"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                value={{selectedProduct.stock}}
+              />
+            </div>
+            <div>
+              <label for="exampleInputEmail1" class="form-label"
+                >imagen url</label
+              >
+              <input
+              name="4"
+                type="text"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                value={{selectedProduct.img}}
+              />
+            </div>
+            
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"
+              >Descripcion</label
+            >
+            <textarea
+            name="4"
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+              value={{selectedProduct.description}}
+            ></textarea>
+          </div>
+          <select name="salient" class="form-select" aria-label="Default select example" [(ngModel)]="selectedProduct.salient">
+            <option [value]="true" [selected]="selectedProduct.salient">Destacado</option>
+            <option [value]="false" [selected]="!selectedProduct.salient">No destacado</option>
+          </select>
+          <button type="submit" class="btn btn-primary mt-3">Guardar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>

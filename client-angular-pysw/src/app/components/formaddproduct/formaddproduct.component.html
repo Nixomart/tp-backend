@@ -1,0 +1,75 @@
+<form class="m-5 rounded-5 p-3 shadow-lg">
+  <div class="mb-3 d-flex flex-column flex-lg-row column-gap-2">
+    <div>
+      <label for="exampleInputEmail1" class="form-label"
+        >Nombre De producto</label
+      >
+      <input
+      [(ngModel)]="newProduct.name"
+        type="text"
+        name="1"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div>
+      <label for="exampleInputEmail1" class="form-label"
+        >Precio del producto</label
+      >
+      <input
+        type="number"
+        name="1"
+        [(ngModel)]="newProduct.price"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div>
+      <label for="exampleInputEmail1" class="form-label"
+        >stock del producto</label
+      >
+      <input
+        type="number"
+        [(ngModel)]="newProduct.stock"
+        name="1"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div>
+      <label for="exampleInputEmail1" class="form-label"
+        >imagen url</label
+      >
+      <input
+      [(ngModel)]="newProduct.img"
+      name="1"
+        type="text"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label"
+      >Descripcion</label
+    >
+    <textarea
+    [(ngModel)]="newProduct.description"
+    name="1"
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      rows="3"
+    ></textarea>
+  </div>
+  <select name="salient" class="form-select" aria-label="Default select example" [(ngModel)]="newProduct.salient">
+    <option [value]="true" >Destacado</option>
+    <option [value]="false">No destacado</option>
+  </select>
+  
+  <button type="submit" class="btn btn-primary mt-3" (click)="addProduct(newProduct)">Guardar</button>
+</form>
