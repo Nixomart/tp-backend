@@ -1,15 +1,16 @@
 export class Ticket {
   id!: number;
   category!: string;
-  dateSold?: Date;
+  dateSold?: string;
   price!: number;
   viewer?: {
     dni?: string;
     name?: string;
     _id?: string
   };
-
-  constructor(dateSold?: Date, id: number = 0,_id: string = '', category: string = '', price: number = 0, viewer: string = '', viewerName: string = '') {
+  espectador: string
+  
+  constructor(espectador: string = '',dateSold?: string, id: number = 0,_id: string = '', category: string = '', price: number = 0, viewer: string = '', viewerName: string = '') {
     this.id = id;
     this.category = category;
     this.price = price;
@@ -19,5 +20,7 @@ export class Ticket {
       name: viewerName,
       _id: _id,
     };
+    this.espectador = espectador
   }
+  
 }

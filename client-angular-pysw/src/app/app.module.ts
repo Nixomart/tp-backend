@@ -10,6 +10,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormaddproductComponent } from './components/formaddproduct/formaddproduct.component';
 import { DivisasComponent } from './components/divisas/divisas.component';
 import { TicketsComponent } from './components/tickets/tickets.component';
+import { ViewerComponent } from './components/viewer/viewer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TicketsComponent } from './components/tickets/tickets.component';
     NavbarComponent,
     FormaddproductComponent,
     DivisasComponent,
-    TicketsComponent
+    TicketsComponent,
+    ViewerComponent
   ],
   imports: [
     BrowserModule,

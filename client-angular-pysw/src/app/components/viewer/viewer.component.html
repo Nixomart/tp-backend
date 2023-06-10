@@ -1,0 +1,80 @@
+<form class="m-5 rounded-5 p-3 shadow-lg">
+    <div class="mb-3  flex-column flex-lg-row column-gap-2">
+      <div>
+        <label for="exampleInputEmail1" class="form-label"
+          >Nombre De Espectador</label
+        >
+        <input
+        [(ngModel)]="newViewer.name"
+          type="text"
+          name="1"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
+      </div>
+      <div>
+        <label for="exampleInputEmail1" class="form-label"
+          >apellido del Espectador</label
+        >
+        <input
+          type="text"
+          name="1"
+          [(ngModel)]="newViewer.surname"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
+      </div>
+      <div>
+        <label for="exampleInputEmail1" class="form-label"
+          >dni del Espectador</label
+        >
+        <input
+          type="number"
+          [(ngModel)]="newViewer.dni"
+          name="1"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
+      </div>
+      <div>
+        <label for="exampleInputEmail1" class="form-label"
+          >email</label
+        >
+        <input
+        [(ngModel)]="newViewer.email"
+        name="1"
+          type="text"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
+      </div>
+      
+    </div>
+    <button type="submit" class="btn btn-primary mt-3" (click)="addViewerr(newViewer)">Guardar</button>
+  </form>
+  
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">NOMBRE</th>
+        <th scope="col">APELLIDO</th>
+        <th scope="col">DNI</th>
+        <th scope="col">EMAIL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let viewer of viewers">
+        <th scope="row">{{viewer.id}}</th>
+        <td>{{viewer.name}}</td>
+        <td>{{viewer.surname}}</td>
+        <td>{{viewer.dni}}</td>
+        <td>{{viewer.email}}</td>
+      </tr>
+    </tbody>
+  </table>
