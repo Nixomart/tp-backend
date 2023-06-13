@@ -2,7 +2,7 @@ import { Router } from "express";
 import { deleteTicket, editTicket, getTicket, getTicketsByCategory, listTickets, saveTicket } from "../controllers/ticket.controller.js";
 
 const router = Router()
-
+//routes ticket rest api
 router.post("/saveTicket", saveTicket)
 router.get("/getTickets", listTickets)
 router.put("/editTicket/:id", editTicket)

@@ -31,7 +31,7 @@ export const getTicket = async (req, res) => {
     res.status(200).json(Ticket);
   } catch (error) {
     console.log(error);
-    res.status(400).json({ message: "Hubo un error al mostrar Ticket!" });
+    res.status(400).json({ message: "Hubo un error al mostrar el Ticket!" });
   }
 };
 
